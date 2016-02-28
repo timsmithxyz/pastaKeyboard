@@ -16,6 +16,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.apache.commons.lang.StringEscapeUtils;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by tim on 2/13/16.
  */
@@ -27,7 +32,8 @@ public class PastaKeyboard extends InputMethodService
 
     private boolean caps = false;
 
-    String data = "";
+    List<String> data = new ArrayList<String>();
+    String emoji;
 
     @Override
     public View onCreateInputView() {
@@ -43,8 +49,18 @@ public class PastaKeyboard extends InputMethodService
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Log.w("HTTP Req", response);
-                        data = response;
+                        String tmp = response.substring("Array ( [0] => ".length(),response.length() - 2);
+                        String[] tmp2 = tmp.split("] => ");
+                        for (int i = 0; i < tmp2.length; i++) {
+                            if (i == 0) {
+                                data.add(StringEscapeUtils.unescapeHtml(tmp2[i].substring(" => ".length(), tmp2[i].length() - 3)));
+                            } else {
+                                data.add(StringEscapeUtils.unescapeHtml(tmp2[i].substring(0, tmp2[i].length() - 3)));
+                            }
+                        }
+                        for (String s : data) {
+                            Log.w("WARBLGARBL", s);
+                        }
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -60,7 +76,6 @@ public class PastaKeyboard extends InputMethodService
 
         Volley.newRequestQueue(this).add(pastaReq);
 
-
         return kv;
     }
 
@@ -69,7 +84,9 @@ public class PastaKeyboard extends InputMethodService
         InputConnection ic = getCurrentInputConnection();
         switch (primaryCode) {
             case Keyboard.KEYCODE_DELETE:
-                ic.deleteSurroundingText(1, 0);
+                //ic.deleteSurroundingText(1, 0);
+                Log.w("FUCKSHITSTACK", data.get(1));
+                ic.commitText(data.get(2), 0);//yolo
                 break;
             case Keyboard.KEYCODE_SHIFT:
                 caps = !caps;
