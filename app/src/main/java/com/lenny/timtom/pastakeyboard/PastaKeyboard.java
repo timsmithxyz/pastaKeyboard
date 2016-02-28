@@ -85,8 +85,6 @@ public class PastaKeyboard extends InputMethodService
         switch (primaryCode) {
             case Keyboard.KEYCODE_DELETE:
                 ic.deleteSurroundingText(1, 0);
-                //Log.w("FUCKSHITSTACK", data.get(1));
-                //ic.commitText(data.get(2), 0);//yolo
                 break;
             case Keyboard.KEYCODE_SHIFT:
                 caps = !caps;

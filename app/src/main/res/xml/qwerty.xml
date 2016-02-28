@@ -60,17 +60,19 @@
         <Key android:codes="-4" android:keyLabel="DONE" android:keyWidth="20%p" android:keyEdgeFlags="right"/>
     </Row>-->
     <Row>
-        <Key android:codes="1" android:keyLabel="pasta #1" android:keyEdgeFlags="left"/>
-        <Key android:codes="2" android:keyLabel="pasta #2" />
-        <Key android:codes="3" android:keyLabel="pasta #3" android:keyEdgeFlags="right"/>
+        <Key android:codes="1" android:keyLabel="pasta #1" android:isRepeatable="true" android:keyWidth="50%p"/>
+        <Key android:codes="2" android:keyLabel="pasta #2" android:isRepeatable="true" android:keyWidth="50%p"/>
+
     </Row>
     <Row>
-        <Key android:codes="4" android:keyLabel="pasta #4" android:keyWidth="50%p" />
-        <Key android:codes="5" android:keyLabel="pasta #5" android:keyWidth="50%p"/>
+        <Key android:codes="3" android:keyLabel="pasta #3" android:keyEdgeFlags="left"/>
+        <Key android:codes="4" android:keyLabel="pasta #4" />
+        <Key android:codes="5" android:keyLabel="pasta #5" android:keyEdgeFlags="right"/>
     </Row>
     <Row>
         <!--Key android:codes="-2" android:keyLabel="SWITCH" android:keyEdgeFlags="left"/-->
-        <Key android:codes="32" android:keyLabel="SPACE"  android:isRepeatable="true" android:keyWidth="50%p"/>
-        <Key android:codes="-5" android:keyLabel="DEL" android:isRepeatable="true" android:keyWidth="50%p" android:keyEdgeFlags="right"/>
+        <Key android:codes="-4" android:keyLabel="DONE" android:keyEdgeFlags="left"/>
+        <Key android:codes="32" android:keyLabel="SPACE" />
+        <Key android:codes="-5" android:keyLabel="DEL"  android:keyEdgeFlags="right" />
     </Row>
 </Keyboard>
