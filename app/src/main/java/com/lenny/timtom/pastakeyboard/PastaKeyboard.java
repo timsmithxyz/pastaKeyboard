@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by tim on 2/13/16.
+ * Created by tim on 2/28/16.
  */
 public class PastaKeyboard extends InputMethodService
         implements KeyboardView.OnKeyboardActionListener {
@@ -42,7 +42,7 @@ public class PastaKeyboard extends InputMethodService
         kv.setKeyboard(keyboard);
         kv.setOnKeyboardActionListener(this);
 
-        String url = "http://45.79.176.133/test.php";
+        String url = "http://45.79.176.133/api.php";
 
 
         StringRequest pastaReq = new StringRequest(Request.Method.GET, url,
@@ -84,9 +84,9 @@ public class PastaKeyboard extends InputMethodService
         InputConnection ic = getCurrentInputConnection();
         switch (primaryCode) {
             case Keyboard.KEYCODE_DELETE:
-                //ic.deleteSurroundingText(1, 0);
-                Log.w("FUCKSHITSTACK", data.get(1));
-                ic.commitText(data.get(2), 0);//yolo
+                ic.deleteSurroundingText(1, 0);
+                //Log.w("FUCKSHITSTACK", data.get(1));
+                //ic.commitText(data.get(2), 0);//yolo
                 break;
             case Keyboard.KEYCODE_SHIFT:
                 caps = !caps;
@@ -97,12 +97,15 @@ public class PastaKeyboard extends InputMethodService
                 ic.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_ENTER));
                 break;
             case Keyboard.KEYCODE_MODE_CHANGE:
-                //ic.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_LANGAGE_SWITCH));
-
+                //ic.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_LANGUAGE_SWITCH));
 
             default:
                 char code = (char) primaryCode;
-                if (Character.isLetter(code) && caps) {
+                if(code < 6 && code >= 0){
+                    ic.commitText(data.get(code-1), 0);
+                }
+
+                else if (Character.isLetter(code) && caps) {
                     code = Character.toUpperCase(code);
                 }
                 ic.commitText(String.valueOf(code), 1);
