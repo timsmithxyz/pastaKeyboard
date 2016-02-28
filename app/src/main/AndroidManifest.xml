@@ -7,11 +7,11 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="Pasta Keyboard"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <service android:name="com.lenny.timtom.pastakeyboard.PastaKeyboard"
-            android:label="@string/lenny_ime"
+            android:label="Pasta Keyboard"
             android:permission="android.permission.BIND_INPUT_METHOD"
             >
             <meta-data android:name="android.view.im" android:resource="@xml/method"/>

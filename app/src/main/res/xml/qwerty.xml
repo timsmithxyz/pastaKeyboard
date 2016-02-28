@@ -61,7 +61,7 @@
     </Row>-->
     <Row>
         <Key android:codes="-2" android:keyLabel="SWITCH" android:keyEdgeFlags="left"/>
-        <Key android:keyOutputText="( ͡° ͜ʖ ͡°) " android:keyLabel="( ͡° ͜ʖ ͡°)" android:isRepeatable="true"/>
+        <Key android:keyOutputText="yolo" android:keyLabel="yolosweg420" android:isRepeatable="true"/>
         <Key android:codes="-5" android:keyLabel="DEL" android:isRepeatable="true" android:keyEdgeFlags="right"/>
     </Row>
 </Keyboard>

@@ -34,7 +34,7 @@ public class PastaKeyboard extends InputMethodService
         kv.setKeyboard(keyboard);
         kv.setOnKeyboardActionListener(this);
 
-        String url = "http://http://45.79.176.133/test.php";
+        String url = "http://45.79.176.133/test.php";
 
 
         StringRequest pastaReq = new StringRequest(Request.Method.GET, url,
@@ -47,7 +47,7 @@ public class PastaKeyboard extends InputMethodService
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.w("HTTP Req", "Err");
+                Log.w("HTTP Req", error.toString());
             }
         }
         );
